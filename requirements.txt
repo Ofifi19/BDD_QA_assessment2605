@@ -3,3 +3,6 @@ uvicorn
 sqlalchemy
 python-multipart
 pydantic
+google-generativeai
+python-dotenv
+Pillow
