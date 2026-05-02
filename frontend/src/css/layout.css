@@ -1,0 +1,184 @@
+/* Main Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: var(--spacing-md);
+  max-width: 1800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.header-controls {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* Main Content Flex Layout */
+.main-content {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Section Common */
+.upload-section, .result-section, .history-section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+}
+
+.upload-section {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.result-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.history-section {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+/* Resizer Styling */
+.resizer {
+  width: 12px;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.resizer::after {
+  content: '';
+  width: 2px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+
+.resizer:hover::after, .resizer.dragging::after {
+  background: var(--primary-color);
+  height: 100px;
+  width: 3px;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Desktop Styles */
+@media (min-width: 1200px) {
+  /* Resizers are only visible/functional on desktop */
+}
+
+/* Tablet: 2 Columns */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .app-container {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .main-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+  }
+  .resizer {
+    display: none;
+  }
+  .upload-section {
+    width: 300px;
+  }
+  .result-section {
+    flex: 1;
+  }
+  .history-section {
+    width: 100%;
+    height: 70vh;
+  }
+}
+
+/* Mobile: 1 Column */
+@media (max-width: 767px) {
+  .app-container {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding: var(--spacing-sm);
+  }
+  .main-content {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  .resizer {
+    display: none;
+  }
+  .upload-section, .result-section, .history-section {
+    width: 100%;
+    height: 70vh;
+  }
+}
+
+/* Section Common */
+.section-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--surface-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.section-body {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  overflow: hidden;
+}
