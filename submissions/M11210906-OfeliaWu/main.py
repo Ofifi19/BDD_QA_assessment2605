@@ -269,10 +269,12 @@ app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 @app.get("/admin")
 def get_admin_page():
     from fastapi.responses import FileResponse
-    return FileResponse("frontend/dist/admin.html")
+    admin_path = os.path.join(os.path.dirname(__file__), "frontend/public/admin.html")
+    return FileResponse(admin_path)
 
 # This serves the index.html at the root URL
-app.mount("/", StaticFiles(directory="frontend/dist", html=True), name="static")
+static_path = os.path.join(os.path.dirname(__file__), "frontend/dist")
+app.mount("/", StaticFiles(directory=static_path, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
